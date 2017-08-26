@@ -3,14 +3,25 @@
   <head>
     <meta charset="UTF-8">
     <title>Psychic Game</title>
+ 
+      <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
   </head>
   <body>
-  <h1>Psychic Game</h1>
-      <p>Guess what letter I'm thinking of?</p>
+    <div class="jumbotron">
+      <div class="container">
+        <h1> The Psychic Game</h1>
+        <div id="psychicGame">
+          <p>Guess what letter I'm thinking of?</p>
+        </div>
+      </div>
+    </div>
     <script type="text/javascript">
-      // Letter Choices
+      // The computer chooses a random letter to be guessed
       var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-      // Var's to record wins and losses
+      // Variables for tracking our wins, losses, number of guesses left guesses, and showing the variable letters
       var wins = 0;
       var losses = 0;
       var guesses = 9;
@@ -35,9 +46,11 @@
             guesses--;
             letters = letters + userGuess; 
           }
+          // Here we create the HTML that will be injected into our div and displayed on the page.
           var html = "<p>Press any letter to start the game</p>" +
           "<p>wins: " + wins + "</p>"  + "<p>losses: " + losses + "</p>"  + 
           "<p>Guesses left: " + guesses + "</p>" + "<p>Guesses so far: " + letters + "</p>";
+          //ends game
           if(guesses === 0){
             losses++;
             guesses = guesses + 9;
@@ -45,7 +58,7 @@
             console.log(guesses);
           }
           // Injecting the HTML we just created into our div and updating the game information on our page.
-          document.querySelector("#game").innerHTML = html;
+          document.querySelector("#psychicGame").innerHTML = html;
         }
      
       };
